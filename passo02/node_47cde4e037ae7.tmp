@@ -1,0 +1,18 @@
+const http = require('http');
+const persons = require('./class_files/Person');
+const students = require('./class_files/Student');
+
+const person = persons.Person;
+const student = students.Student;
+
+const s1 = new student('Samilla', 'Badulla', 'Vihara', 'Science');
+s1.setDOB(1996);
+s1.setGender('female');
+s1.setID('001');
+
+http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type':'text/html'});
+    res.write('<h1>Student</h1>');
+    res.write(s1.bio());
+    res.end();
+}).listen(500);
